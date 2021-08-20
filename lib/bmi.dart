@@ -39,6 +39,10 @@ class _BMIState extends State<BMI> {
                       height: 200,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                              color: isMale? Colors.black54:Colors.grey,
+                              width: 3
+                          ),
                           color:isMale? Colors.black54:Colors.grey),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -74,6 +78,10 @@ class _BMIState extends State<BMI> {
                       height: 200,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                            color: !isMale? Colors.black54:Colors.grey,
+                            width: 3
+                          ),
                           color:!isMale? Colors.black54:Colors.grey),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -174,7 +182,7 @@ class _BMIState extends State<BMI> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             FloatingActionButton(
-                                backgroundColor: Colors.black,
+                                backgroundColor: Colors.red,
                                 child: Icon(FontAwesomeIcons.minus),
                                 onPressed: () {
                                   setState(() {
@@ -183,7 +191,7 @@ class _BMIState extends State<BMI> {
                                   });
                                 }),
                             FloatingActionButton(
-                                backgroundColor: Colors.black,
+                                backgroundColor: Colors.blue,
                                 child: Icon(FontAwesomeIcons.plus),
                                 onPressed: () {
                                   setState(() {
@@ -228,7 +236,7 @@ class _BMIState extends State<BMI> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             FloatingActionButton(
-                                backgroundColor: Colors.black,
+                                backgroundColor: Colors.red,
                                 child: Icon(FontAwesomeIcons.minus),
                                 onPressed: () {
                                   setState(() {
@@ -237,7 +245,7 @@ class _BMIState extends State<BMI> {
                                   });
                                 }),
                             FloatingActionButton(
-                                backgroundColor: Colors.black,
+                                backgroundColor: Colors.blue,
                                 child: Icon(FontAwesomeIcons.plus),
                                 onPressed: () {
                                   setState(() {
