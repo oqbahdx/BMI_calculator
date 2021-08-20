@@ -1,3 +1,5 @@
+
+import 'package:bmicalculator/result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,6 +10,10 @@ class BMI extends StatefulWidget {
 }
 
 class _BMIState extends State<BMI> {
+  double height = 130;
+  bool isMale = true;
+  int weight = 65;
+  int age = 29;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,27 +29,34 @@ class _BMIState extends State<BMI> {
             child: Row(
               children: [
                 Expanded(
-                  child: Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.grey),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.male,
-                          size: 90,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'Male',
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        )
-                      ],
+                  child: GestureDetector(
+                    onTap: (){
+                     setState(() {
+                       isMale = true;
+                     });
+                    },
+                    child: Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color:isMale? Colors.black54:Colors.grey),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.male,
+                            size: 90,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Male',
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -51,27 +64,34 @@ class _BMIState extends State<BMI> {
                   width: 20,
                 ),
                 Expanded(
-                  child: Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.grey),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.female,
-                          size: 90,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          'Female',
-                          style: TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
-                        )
-                      ],
+                  child: GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        isMale = false;
+                      });
+                    },
+                    child: Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color:!isMale? Colors.black54:Colors.grey),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.female,
+                            size: 90,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Female',
+                            style: TextStyle(
+                                fontSize: 30, fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -96,7 +116,7 @@ class _BMIState extends State<BMI> {
                     textBaseline: TextBaseline.alphabetic,
                     children: [
                       Text(
-                        '130',
+                        '${height.round()}',
                         style: TextStyle(
                             fontSize: 45, fontWeight: FontWeight.bold),
                       ),
@@ -111,7 +131,12 @@ class _BMIState extends State<BMI> {
                   Slider(
                       activeColor: Colors.white,
                       inactiveColor: Colors.white38,
-                      max: 220, min: 120, value: 130, onChanged: (value) {}),
+
+                      max: 220, min: 120, value: height, onChanged: (value) {
+                       setState(() {
+                         height = value;
+                       });
+                  }),
                 ],
               ),
             ),
@@ -138,7 +163,7 @@ class _BMIState extends State<BMI> {
                           height: 10,
                         ),
                         Text(
-                          '65',
+                          '$weight',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 40),
                         ),
@@ -151,11 +176,20 @@ class _BMIState extends State<BMI> {
                             FloatingActionButton(
                                 backgroundColor: Colors.black,
                                 child: Icon(FontAwesomeIcons.minus),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  setState(() {
+                                    if(weight>1)
+                                    weight--;
+                                  });
+                                }),
                             FloatingActionButton(
                                 backgroundColor: Colors.black,
                                 child: Icon(FontAwesomeIcons.plus),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  setState(() {
+                                    weight++;
+                                  });
+                                }),
                           ],
                         )
                       ],
@@ -183,7 +217,7 @@ class _BMIState extends State<BMI> {
                           height: 10,
                         ),
                         Text(
-                          '29',
+                          '$age',
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 40),
                         ),
@@ -196,11 +230,20 @@ class _BMIState extends State<BMI> {
                             FloatingActionButton(
                                 backgroundColor: Colors.black,
                                 child: Icon(FontAwesomeIcons.minus),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  setState(() {
+                                    if(age>1)
+                                    age--;
+                                  });
+                                }),
                             FloatingActionButton(
                                 backgroundColor: Colors.black,
                                 child: Icon(FontAwesomeIcons.plus),
-                                onPressed: () {}),
+                                onPressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                }),
                           ],
                         ),
                       ],
@@ -211,13 +254,20 @@ class _BMIState extends State<BMI> {
             ),
           ),
           Expanded(
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(color: Colors.grey),
-              child: Center(
-                child: Text(
-                  'CALCULATOR',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),
+            child: GestureDetector(
+              onTap: (){
+                var result = (weight/height/height)*10000;
+                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Result(
+                    gender: isMale, height: height, weight: weight, bmi: result,age: age,)));
+              },
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(color: Colors.grey),
+                child: Center(
+                  child: Text(
+                    'CALCULATOR',
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),
+                  ),
                 ),
               ),
             ),
