@@ -1,4 +1,3 @@
-
 import 'package:bmicalculator/result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,20 +29,19 @@ class _BMIState extends State<BMI> {
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: (){
-                     setState(() {
-                       isMale = true;
-                     });
+                    onTap: () {
+                      setState(() {
+                        isMale = true;
+                      });
                     },
                     child: Container(
                       height: 200,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           border: Border.all(
-                              color: isMale? Colors.black54:Colors.grey,
-                              width: 3
-                          ),
-                          color:isMale? Colors.black54:Colors.grey),
+                              color: isMale ? Colors.black54 : Colors.grey,
+                              width: 3),
+                          color: isMale ? Colors.black54 : Colors.grey),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -69,7 +67,7 @@ class _BMIState extends State<BMI> {
                 ),
                 Expanded(
                   child: GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       setState(() {
                         isMale = false;
                       });
@@ -79,10 +77,9 @@ class _BMIState extends State<BMI> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           border: Border.all(
-                            color: !isMale? Colors.black54:Colors.grey,
-                            width: 3
-                          ),
-                          color:!isMale? Colors.black54:Colors.grey),
+                              color: !isMale ? Colors.black54 : Colors.grey,
+                              width: 3),
+                          color: !isMale ? Colors.black54 : Colors.grey),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -139,12 +136,14 @@ class _BMIState extends State<BMI> {
                   Slider(
                       activeColor: Colors.white,
                       inactiveColor: Colors.white38,
-
-                      max: 220, min: 120, value: height, onChanged: (value) {
-                       setState(() {
-                         height = value;
-                       });
-                  }),
+                      max: 220,
+                      min: 120,
+                      value: height,
+                      onChanged: (value) {
+                        setState(() {
+                          height = value;
+                        });
+                      }),
                 ],
               ),
             ),
@@ -182,15 +181,16 @@ class _BMIState extends State<BMI> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             FloatingActionButton(
+                                heroTag: 'w-',
                                 backgroundColor: Colors.red,
                                 child: Icon(FontAwesomeIcons.minus),
                                 onPressed: () {
                                   setState(() {
-                                    if(weight>1)
-                                    weight--;
+                                    if (weight > 1) weight--;
                                   });
                                 }),
                             FloatingActionButton(
+                                heroTag: 'w+',
                                 backgroundColor: Colors.blue,
                                 child: Icon(FontAwesomeIcons.plus),
                                 onPressed: () {
@@ -236,15 +236,16 @@ class _BMIState extends State<BMI> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             FloatingActionButton(
+                                heroTag: 'a-',
                                 backgroundColor: Colors.red,
                                 child: Icon(FontAwesomeIcons.minus),
                                 onPressed: () {
                                   setState(() {
-                                    if(age>1)
-                                    age--;
+                                    if (age > 1) age--;
                                   });
                                 }),
                             FloatingActionButton(
+                                heroTag: 'a+',
                                 backgroundColor: Colors.blue,
                                 child: Icon(FontAwesomeIcons.plus),
                                 onPressed: () {
@@ -263,10 +264,18 @@ class _BMIState extends State<BMI> {
           ),
           Expanded(
             child: GestureDetector(
-              onTap: (){
-                var result = (weight/height/height)*10000;
-                Navigator.push(context, MaterialPageRoute(builder: (BuildContext context)=>Result(
-                    gender: isMale, height: height, weight: weight, bmi: result,age: age,)));
+              onTap: () {
+                double result = (weight / height / height) * 10000;
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext context) => Result(
+                              gender: isMale,
+                              height: height,
+                              weight: weight,
+                              bmi: result,
+                              age: age,
+                            )));
               },
               child: Container(
                 width: double.infinity,

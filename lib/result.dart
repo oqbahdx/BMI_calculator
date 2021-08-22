@@ -65,7 +65,7 @@ class _ResultState extends State<Result> {
               height: 10,
             ),
             Text(
-              'Your BMI is : ${widget.bmi.round()}',
+              'Your BMI is : ${widget.bmi.toStringAsFixed(2)}',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
             ),
             SizedBox(
