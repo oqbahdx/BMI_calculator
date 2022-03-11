@@ -4,7 +4,9 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is  calculate the body mass index for users.
+
+![BMI 1](https://user-images.githubusercontent.com/70256509/157855445-f80f7219-2f99-4d31-acea-7fc3a6757e90.png)
 
 A few resources to get you started if this is your first Flutter project:
 
