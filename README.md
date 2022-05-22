@@ -1,6 +1,6 @@
 # bmicalculator
 
-A new Flutter project.
+An application to calculate BMI that asks you for your height, age, and weight and gives you the result with advice.
 
 ## Getting Started
 
