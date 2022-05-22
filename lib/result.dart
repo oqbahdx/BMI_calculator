@@ -95,7 +95,7 @@ class _ResultState extends State<Result> {
                                   : Colors.grey),
                 ),child: Center(
                 child: Text(
-                  (widget.bmi < 18.5
+                   (widget.bmi < 18.5
                       ? 'Underweight'
                       : widget.bmi > 18.5 && widget.bmi < 24.9
                       ? 'Normal weight'
@@ -110,6 +110,34 @@ class _ResultState extends State<Result> {
               ),
               ),
             ),
+            SizedBox(height: 15,),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                color: Colors.black87,
+                child: Center(child: Text(  (widget.bmi < 18.5
+                    ? 'You may need to put on some weight. You are recommended to ask your doctor or a dietitian for advice'
+                    : widget.bmi > 18.5 && widget.bmi < 24.9
+                    ? ' By maintaining a healthy weight, you lower your risk of developing serious health problems.'
+                    : widget.bmi > 24.9 && widget.bmi < 29.9
+                    ? 'You may be advised to lose some weight for health reasons. You are recommended to talk to your doctor or a dietitian for advice'
+                    : widget.bmi > 29.9
+                    ? 'Your health may be at risk if you do not lose weight. You are recommended to talk to your doctor or a dietitian for advice'
+                    : '').toUpperCase()
+                    ,style: TextStyle(
+                        fontSize: 24,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic,
+                      color: (widget.bmi < 18.5
+                          ? Colors.yellow
+                          : widget.bmi > 18.5 && widget.bmi < 24.9
+                          ? Colors.green
+                          : widget.bmi > 24.9 && widget.bmi < 29.9
+                          ? Colors.orange
+                          : widget.bmi > 29.9
+                          ? Colors.red
+                          : Colors.grey)
+                    ))),
+              ),
+            )
           ],
         ),
       ),
